@@ -6,6 +6,8 @@ public class RestarantFoods {
 	
 	private String restaurant;
 	
+	private String restaurantImage;
+	
 	private List<Food> foods;
 	
 	public void setRestaurant(String restaurant) {
@@ -19,5 +21,11 @@ public class RestarantFoods {
 	}
 	public List<Food> getFoods() {
 		return foods;
+	}
+	public void setRestaurantImage(String restaurantImage) {
+		this.restaurantImage = restaurantImage;
+	}
+	public String getRestaurantImage() {
+		return restaurantImage;
 	}
 }

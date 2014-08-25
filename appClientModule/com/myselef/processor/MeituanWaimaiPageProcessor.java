@@ -11,7 +11,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class MeituanWaimaiPageProcessor extends WaiMaiPageProcessor implements
 		PageProcessor {
 	
-	private final static String URL_DISTRICT = "http://www.waimai.meituan.com/shenzhen";
+	private final static String URL_DISTRICT = "http://www.waimai.meituan.com/\\?stay=1";
 	private final static String URL_RESTAURANT = "http://www.waimai.meituan.com/home/\\w+";
 	private final static String URL_RESTAURANT2 = "http://www.waimai.meituan.com/geo/geohash\\?.*";
 	private final static String URL_FOOD = "http://www.waimai.meituan.com/restaurant/\\w+";
@@ -40,22 +40,25 @@ public class MeituanWaimaiPageProcessor extends WaiMaiPageProcessor implements
 	}
 
 	void districtProcess(Page page) {
-		//µØÇø
-		List<String> districtUrls = page.getHtml().css("ul.district-list").links().regex(".*/geo/geohash\\?.*").all();
+		//ï¿½ï¿½ï¿½ï¿½
+		List<String> districtUrls = page.getHtml().xpath("//div[@class='list']/ul/li/a/@href").all();
+//		List<String> districtUrls = page.getHtml().css("ul.district-list").links().regex(".*/geo/geohash\\?.*").all();
 		page.addTargetRequests(districtUrls);
+//		page.addTargetRequest("http://www.waimai.meituan.com/?city_pinyin=shenzhe");
 //		page.putField("district", page.getHtml().xpath("//ul[@class='district-list']/li/a/text()").all().toString());
 	}
 	
 	void restaurantProcess(Page page) {
-//		//ÉÌ¼Ò
+//		//ï¿½Ì¼ï¿½
 		List<String> restaurantUrls = page.getHtml().css("a.rest-atag").links().regex(".*/restaurant/.*").all();
 		page.addTargetRequests(restaurantUrls);		
 //		page.putField("restaurant", page.getHtml().xpath("//div[@class='ori-foodtype-nav']/ul/li/a/title").all());
 	}
 	
 	void foodProcess(Page page) {
-		//²ËÆ·
+		//ï¿½ï¿½Æ·
 		page.putField(Constant.RESTAURANT, page.getHtml().xpath("//div[@class='na']/a/span/text()").all());
+		page.putField(Constant.RESTAURANT_IMAGE, page.getHtml().xpath("//div[@class='avatar fl']/img/@src").all());
 		page.putField(Constant.FOODTYPES, page.getHtml().xpath("//div[@class='ori-foodtype-nav']/ul/li/a/@title").all());
 //		page.putField("foodtype", page.getHtml().xpath("//div[@class='food-nav']//div[@class='category']/h3/span/text()").all());
 		page.putField(Constant.FOOD, page.getHtml().xpath("//div[@class='fl description']//div[@class='na nodesc']/@title").all());

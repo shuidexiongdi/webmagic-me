@@ -7,6 +7,8 @@ public class Food {
 	private String food;
 
 	private int price;
+	
+	private Image image;
 
 	public void setFoodtypes(String foodtypes) {
 		this.foodtypes = foodtypes;
@@ -35,6 +37,14 @@ public class Food {
 	public String toString() {
 		return "Foods{" + "foodtypes="
 				+ foodtypes + ", food=" + food + ", price=" + price + '}';
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	public Image getImage() {
+		return image;
 	}
 
 }

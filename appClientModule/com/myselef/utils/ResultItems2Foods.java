@@ -14,6 +14,7 @@ public final class ResultItems2Foods {
 	public static RestarantFoods meituanFoods(ResultItems resultItems) {
 		if(resultItems == null) {return null;}
 		List<String> restarants = resultItems.get(Constant.RESTAURANT);//有且仅有1个
+		List<String> restarantImages = resultItems.get(Constant.RESTAURANT_IMAGE);//有且仅有1个
 		List<String> foodtypes = resultItems.get(Constant.FOODTYPES);//每个类型后面都跟着数量：xxx(n)
 		List<String> foods = resultItems.get(Constant.FOOD);//菜品名称
 		List<String> prices = resultItems.get(Constant.PRICE);//菜品价格: ￥10/份
@@ -28,6 +29,7 @@ public final class ResultItems2Foods {
 			
 			//解析商家
 			restarantFood.setRestaurant(restarants.get(0));
+			restarantFood.setRestaurantImage(restarantImages != null ? restarantImages.get(0) : null);
 			//解析菜品类型
 			/*
 			Map<String,Integer> foodtypesMap= new LinkedHashMap<String,Integer>();

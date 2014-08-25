@@ -20,37 +20,37 @@ public abstract class WaiMaiPageProcessor implements PageProcessor {
 	}
 	
 	/**
-	 * 是否为地区的链接
+	 * if this page is district URL ,return true,else return false;
 	 * @param page
 	 * @return
 	 */
 	abstract boolean isDistictUrl(Page page);
 	/**
-	 * 是否为商家的链接
+	 * if this page is restaurant URL ,return true,else return false;
 	 * @param page
 	 * @return
 	 */
 	abstract boolean isRestaurantUrl(Page page);
 	/**
-	 * 是否为菜品的链接
+	 * if this page is food URL ,return true,else return false;
 	 * @param page
 	 * @return
 	 */
 	abstract boolean isFoodUrl(Page page);
 	/**
-	 * 区域的信息抽取处理
+	 * if this page is district URL, then run this method;
 	 * @param page
 	 * @return
 	 */
 	abstract void districtProcess(Page page);
 	/**
-	 * 商家的信息抽取处理
+	 * if this page is restaurant URL, then run this method;
 	 * @param page
 	 * @return
 	 */
 	abstract void restaurantProcess(Page page);
 	/**
-	 * 菜品的信息抽取处理
+	 * if this page is food URL, then run this method;
 	 * @param page
 	 * @return
 	 */
