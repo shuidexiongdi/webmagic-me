@@ -1,0 +1,9 @@
+*.log
+*.class
+.settings/
+build/
+.project
+.classpath
+mygitkey
+mygitkey.pub
+
